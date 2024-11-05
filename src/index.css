@@ -11,3 +11,114 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  @apply bg-gray-100 text-gray-900 font-sans;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.app {
+  @apply w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden;
+}
+
+.intro-container {
+  @apply relative flex flex-col items-center p-8 text-center;
+  color: #1a202c;
+  animation: fadeIn 0.5s ease-in-out;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.intro-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./Assets/logo.png'); /* Image path */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3; /* Opacity Is 0.2 */
+  z-index: -1; /* Set the z-index to a negative value */
+}
+
+h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+p {
+  @apply text-lg mb-6;
+}
+
+.option-button {
+  @apply w-full bg-blue-500 text-white p-3 my-2 rounded-md font-semibold shadow-md transition duration-200 ease-in-out hover:bg-blue-600;
+}
+
+.question-container {
+  @apply p-6 text-center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.results-container {
+  @apply flex flex-col items-center p-6;
+  color: #2d3748;
+}
+
+button {
+  @apply bg-blue-500 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200 ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.registration-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.registration-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form input {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.registration-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registration-form button:hover {
+  background-color: #0056b3;
+}
