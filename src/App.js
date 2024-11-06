@@ -54,6 +54,7 @@ function App() {
 
   const handleStartExam = (info) => {
     setStudentInfo(info);
+    
     navigate('/intro'); // To move to the next page
   };
 

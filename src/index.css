@@ -1,11 +1,4 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -23,16 +16,26 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+
   min-height: 100vh;
+  height: 100vh;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.app {
-  @apply w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden;
-}
+
 
 .intro-container {
   @apply relative flex flex-col items-center p-8 text-center;
+  width: 70vw;
+  height: 90vh;
   color: #1a202c;
   animation: fadeIn 0.5s ease-in-out;
   overflow: hidden;
@@ -42,6 +45,9 @@ body {
 .intro-container::before {
   content: "";
   position: absolute;
+  width: 90%;
+  height: 90%;
+  margin: auto;
   top: 0;
   left: 0;
   right: 0;
@@ -49,8 +55,12 @@ body {
   background-image: url('./Assets/logo.png'); /* Image path */
   background-size: cover;
   background-position: center;
-  opacity: 0.3; /* Opacity Is 0.2 */
+  opacity: 0.1; /* Opacity Is 0.2 */
   z-index: -1; /* Set the z-index to a negative value */
+}
+
+.app {
+  @apply w-full  bg-white rounded-lg shadow-lg overflow-hidden;
 }
 
 h1 {
@@ -85,7 +95,8 @@ button {
 }
 
 .registration-form {
-  max-width: 400px;
+  width: 90vw;
+  height: 90vh;
   margin: auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -94,8 +105,8 @@ button {
 }
 
 .logo {
-  width: 100px;
-  margin-bottom: 20px;
+  width: 250px;
+  margin-bottom: 10px;
 }
 
 .registration-form form {
@@ -104,7 +115,7 @@ button {
 }
 
 .registration-form input {
-  margin: 8px 0;
+  margin: 15px 0;
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -117,6 +128,7 @@ button {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 .registration-form button:hover {

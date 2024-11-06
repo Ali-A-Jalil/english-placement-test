@@ -28,7 +28,7 @@ const RegistrationForm = ({ onStartExam }) => {
                     required
                 />
                 <input
-                    type="tel"
+                    type="number"
                     placeholder="Phone Number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}

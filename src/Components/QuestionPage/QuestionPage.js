@@ -1,8 +1,8 @@
-// QuestionPage.js
 import React, { useState, useEffect } from 'react';
 
 const QuestionPage = ({ level, questions, onAnswer }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(5); // Time left for each question
   const [showOptions, setShowOptions] = useState(false); // Controls the visibility of options
 
@@ -22,16 +22,52 @@ const QuestionPage = ({ level, questions, onAnswer }) => {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     } else if (timeLeft === 0) {
-      handleAnswer(null); // when time runs out
+      handleAnswer(null); // When time runs out
+      
     }
-  }, [timeLeft, currentQuestion]);
+  }, [timeLeft, currentQuestion,]);
 
   const handleAnswer = (answer) => {
     if (currentQuestion) {
-      onAnswer(answer, currentQuestion.answer);
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setTimeLeft(5); // Reset the time
+      if (answer === currentQuestion.answer) {
+        setScore(score + 1);
+      }
+
+      // Check if it is the last question in the level
+      if (currentQuestionIndex + 1 === questions.length) {
+        evaluateLevelProgression();
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setTimeLeft(5); // Reset the time
+      }
     }
+  };
+
+  // Logic for evaluating level progression based on the score
+  const evaluateLevelProgression = () => {
+    let newLevel = level;
+
+    if (level === 6) {
+      newLevel = score >= 20 ? 8 : 4;
+    } else if (level === 8) {
+      newLevel = score >= 20 ? 10 : 7;
+    } else if (level === 10) {
+      newLevel = score >= 25 ? 10 : 9;
+    } else if (level === 7 || level === 9) {
+      newLevel = score >= 20 ? level : level - 1;
+    } else if (level === 4) {
+      newLevel = score >= 20 ? 5 : 2;
+    } else if (level === 2) {
+      newLevel = score >= 20 ? 3 : 1;
+    } else if (level === 1) {
+      newLevel = score > 25 ? 1 : 0;
+    }
+
+    // Reset for the next level or final state
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setTimeLeft(5);
+    onAnswer(null, null, newLevel); // Assuming onAnswer handles new level transition
   };
 
   if (!currentQuestion) {
